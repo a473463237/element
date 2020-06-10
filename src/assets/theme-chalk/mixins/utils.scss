@@ -1,0 +1,19 @@
+// 清除浮动
+// &::after
+@mixin utils-clearfix {
+    $selector: &;
+  
+    @at-root {
+  
+      #{$selector}::after,
+      #{$selector}::before {
+        display: block;
+        content: "";
+      }
+  
+      #{$selector}::after {
+        clear: both;
+      }
+    }
+  }
+  

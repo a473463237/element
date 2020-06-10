@@ -1,43 +1,43 @@
-.el-row {
-    // 行级元素清除浮动
-    &::after,
-    &::before {
-      display: block;
-      content: "";
-    }
-  
-    &::after {
-      clear: both;
-    }
-  
-    &--flex {
-      display: flex;
-    }
-  
-  
-    // flex 布局下的水平排列方式
-    &.is-justify-end {
-      justify-content: flex-end;
-    }
-  
-    &.is-justify-ecenter {
-      justify-content: center;
-    }
-  
-    &.is-justify-space-between {
-      justify-content: space-between;
-    }
-  
-    &.is-justify-space-around {
-      justify-content: space-around;
-    }
-  
-    // flex 布局下的垂直排列方式
-    &.is-align-middle {
-      align-items: center;
-    }
-  
-    &.is-align-bottom {
-      align-items: flex-end;
-    }
+// 需要混入的 scss定义 以及 公共变量
+@import './mixins/mixins.scss';
+// 一个清除浮动 的混入
+@import './mixins/utils.scss';
+
+
+// 利用定义的 混入方法，传参 真正混入到页面中
+@include b (row) {
+
+  @include utils-clearfix;
+
+  @include m (flex) {
+    display: flex;
   }
+
+  // flex 布局下的水平排列方式
+
+  @include when(justify-end) {
+    justify-content: flex-end;
+  }
+
+  @include when(justify-center) {
+    justify-content: center;
+  }
+
+  @include when(justify-space-between) {
+    justify-content: space-between;
+  }
+
+  @include when(justify-space-around) {
+    justify-content: space-around;
+  }
+
+  @include when(align-middle) {
+    align-items: center;
+  }
+
+  @include when(align-bottom) {
+    align-items: flex-end;
+  }
+
+
+}

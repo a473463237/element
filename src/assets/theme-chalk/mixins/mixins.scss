@@ -1,0 +1,48 @@
+ //依赖公共变量
+@import './config.scss'; 
+/*
+------------------BEM-------------------
+*/
+
+// 块
+@mixin b($block) {
+    // .el-row
+    $B: $namespace + '-'+ $block; // 额外导入的部分将出现在@content标志的地方：
+  
+    @at-root {
+      .#{$B} {
+        @content;
+      }
+    }
+  }
+  
+  // 修饰符 &--flex 
+  @mixin m($modifier) {
+    $selector: &;
+    // $selector + $modifier-separator + $modifier;
+    $currentSelector: '';
+  
+    // 有可能我会穿一个数组，比如 都是flex布局的,只是为了 定义完成 $currentSelector 变量
+    @each $unit in $modifier {
+      $currentSelector: $currentSelector + $selector+ $modifier-separator+$unit+', ';
+    }
+  
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  
+  }
+  
+  // &.is-justify-end 
+  @mixin when ($state) {
+    @at-root {
+  
+      //  .is- + $state
+      &.#{$state-prefix+$state} {
+        @content;
+      }
+    }
+  }
+  
