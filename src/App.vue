@@ -2,8 +2,8 @@
   <div id="app">
     <h1>基础布局</h1>
 
-    <el-row>
-      <el-col :span="24">
+    <el-row tag='p'>
+      <el-col :span="24" tag='h2'>
         <div class="grid-content bg-purple-dark"></div>
       </el-col>
     </el-row>
@@ -244,20 +244,21 @@
 </template>
 
 <script>
-import ElRow from '@element/row.vue';
-import ElCol from '@element/col.vue';
+// import ElRow from '@element/row.js';
+// import ElCol from '@element/col.js';
 
 export default {
   name: 'App',
   components: {
-    ElRow,
-    ElCol,
+    // ElRow,
+    // ElCol,
   },
 };
 </script>
 
 <style lang="scss">
-@import '@/assets/theme-chalk/display.scss';
+@import '@/assets/theme-chalk/index.scss';
+
 #app {
   .el-row {
     margin-bottom: 20px;
