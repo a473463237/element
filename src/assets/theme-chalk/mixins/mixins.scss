@@ -46,3 +46,56 @@
     }
   }
   
+
+  /*  js
+  const sm =768px,
+        md=992px,
+        lg=1200px,
+        xl=1920px;
+
+  const breakPoints={
+    xs:(max-width: 768px - 1),
+    sm:(min-width: 768px),
+    md:(min-width: 992px),
+    lg:(min-width: 1200px),
+    xl:(min-width: 1920px)
+  }
+
+  function res(){
+    if(breakPoints.keys){
+    @media only screen and ${xs}{xxx}
+    }else{
+    new Error(`不存在此${keys}值`)
+    }
+  }
+*/
+
+// cols mixin的函数
+
+
+
+/* 断点 （break points）
+------------------------
+
+- map-has-key($map,$key)
+  > 根据给定的 key 值判断 map 是否有对应的 value 值，如果有返回 true，否则返回 false。
+
+- map-get($map,$key)
+  > 根据给定的 key 值，返回 map 中相关的值。
+
+# inspect函数
+> Maps不能转换为纯CSS。作为变量的值或参数传递给CSS函数将会导致错误，此时可以使用inspect($value) 函数以产生输出字符串。
+
+*/
+
+@mixin res($key, $map:$--breakpoints) {
+  @if map-has-key($map, $key) {
+    @media only screen and #{inspect(map-get($map, $key))} {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "undefined points: `#{$map}`"
+  }
+};
